@@ -41,8 +41,8 @@ sudo openssl rsa -in server.key.org -out server.key
 sudo openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 
 cd ..
-sed '10assl on;' nginx.conf
-sed '11assl_certificate /etc/nginx/ssl/server.crt;' nginx.conf
-sed '12assl_certificate_key /etc/nginx/ssl/server.key;' nginx.conf 
+sed -i '5assl on;' nginx.conf
+sed -i '6assl_certificate /etc/nginx/ssl/server.crt;' nginx.conf
+sed -i '7assl_certificate_key /etc/nginx/ssl/server.key;' nginx.conf 
 sudo nginx -s reload
 curl https://localhost:80/
